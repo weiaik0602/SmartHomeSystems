@@ -36,3 +36,8 @@ void turn(Device device, State state);
 Eg. turn(KITCHEN_LIGHT, ON);
     turn(WATER_HEATER, OFF);
 ```
+Mock the following functions
+```
+void getGpsCoordinate(GpsCoordinate *gps);
+void turn(Device device, State state);
+```

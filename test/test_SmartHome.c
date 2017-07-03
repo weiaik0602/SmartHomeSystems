@@ -15,7 +15,6 @@ void tearDown(void)
 
 void test_smarthome_Turn_Kitchen_light_when_less_than2(void)
 {
-	int x;
 	GpsCoordinate gps;
 	gps.x=196;
 	gps.y=5400;
@@ -26,9 +25,20 @@ void test_smarthome_Turn_Kitchen_light_when_less_than2(void)
 	doSmartThings();
 	
 }
-void test_smarthome_Turn_GarageDoor_when_less_than5(void)
+void test_smarthome_Turn_GarageDoorOFF_when_Equal0(void)
 {
-	int x;
+	GpsCoordinate gps;
+	gps.x=220;
+	gps.y=5300;
+	
+	getGpsCoordinate_ExpectAndReturn(gps);
+	turn_Expect(GARAGE_DOOR,OFF);
+	
+	doSmartThings();
+	
+}
+void test_smarthome_Turn_GarageDoorOn_when_less_than5(void)
+{
 	GpsCoordinate gps;
 	gps.x=215;
 	gps.y=5300;
@@ -41,7 +51,6 @@ void test_smarthome_Turn_GarageDoor_when_less_than5(void)
 }
 void test_smarthome_Turn_AirCond_waterHeater_when_less_than2000(void)
 {
-	int x;
 	GpsCoordinate gps;
 	gps.x=200;
 	gps.y=6300;

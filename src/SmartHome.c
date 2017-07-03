@@ -9,6 +9,8 @@
 #define garage_centre_y 5300
 #define kitchen_centre_x 196
 #define kitchen_centre_y 5400
+#define garage_door_x 220
+#define garage_door_y 5300
 
 
 void doSmartThings(){
@@ -16,21 +18,23 @@ void doSmartThings(){
 	gps=getGpsCoordinate();
 	
 	
-	int x=gps.x;
-	int y=gps.y;
-	int rangefromhome= sqrt(square(x-home_centre_x)+square(y-home_centre_y));
-	int rangefromgarage= sqrt(square(x-garage_centre_x)+square(y-garage_centre_y));
-	int rangefromkitchen= sqrt(square(x-kitchen_centre_x)+square(y-kitchen_centre_y));
-	
-	if(rangefromkitchen<2){
-		
+	float x=gps.x;
+	float y=gps.y;
+	float rangefromhome= sqrt(square(x-home_centre_x)+square(y-home_centre_y));
+	float rangefromgarage= sqrt(square(x-garage_centre_x)+square(y-garage_centre_y));
+	float rangefromkitchen= sqrt(square(x-kitchen_centre_x)+square(y-kitchen_centre_y));
+	float rangefromgaragedoor= sqrt(square(x-garage_door_x)+square(y-garage_door_y));
+  
+  
+  
+	if(rangefromkitchen<=2){
 		turn(KITCHEN_LIGHT, ON);
-		
+	}
+  else if(rangefromgaragedoor==0){
+		turn(GARAGE_DOOR,OFF);
 	}
 	else if(rangefromgarage<5){
 		turn(GARAGE_DOOR,ON);
-		
-		
 	}
 	else if(rangefromhome<2000){
 		turn(AIRCOND, ON);
@@ -42,6 +46,6 @@ void doSmartThings(){
 	
 
 
-int square(int x){
+float square(float x){
 	return x*x;
 }

@@ -3,8 +3,8 @@
 
 typedef struct GpsCoordinate GpsCoordinate;
 struct GpsCoordinate {
-  int x;
-  int y;   
+  float x;
+  float y;   
 };
 
 typedef enum {
@@ -20,6 +20,6 @@ typedef enum {
 } State;
 
 
-int square(int x);
+float square(float x);
 void doSmartThings();
 #endif // _SMARTHOME_H
